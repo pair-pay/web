@@ -4,7 +4,21 @@
     "loading": "Loading...",
     "greeting": "Hello, world!",
     "welcome": "Welcome!",
-    "add": "Add"
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "create": "Create",
+    "update": "Update",
+    "search": "Search",
+    "close": "Close",
+    "back": "Back",
+    "home": "Home",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Info"
   },
   "navbar": {
     "groups": "Groups",
@@ -51,6 +65,61 @@
       "paidByUser": "Paid By User",
       "group": "Group",
       "splitType": "Split Type"
+    }
+  },
+  "pages": {
+    "groups": {
+      "title": "Groups",
+      "create": "Create Group",
+      "empty": "No groups yet",
+      "emptyMessage": "Create your first group to get started",
+      "searchPlaceholder": "Search groups by name or description...",
+      "noResults": "No groups found",
+      "noResultsMessage": "Try adjusting your search terms",
+      "errors": {
+        "loadFailed": "Error loading groups. Please try refreshing the page.",
+        "unauthorized": "Unauthorized - No access token"
+      }
+    },
+    "profile": {
+      "title": "Profile",
+      "errors": {
+        "loadFailed": "Error loading profile. Please try refreshing the page.",
+        "noData": "No profile data found",
+        "noDataMessage": "Unable to load your profile information"
+      }
+    },
+    "notFound": {
+      "title": "Page Not Found",
+      "subtitle": "404",
+      "message": "The page you're looking for doesn't exist or has been moved.",
+      "help": "If you think this is a mistake, please contact support.",
+      "searchHelp": "Or try searching for what you need from the home page.",
+      "goHome": "Go to Home",
+      "goBack": "Go Back"
+    }
+  },
+  "components": {
+    "groupCard": {
+      "noDescription": "No description provided",
+      "created": "Created",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "createGroupDialog": {
+      "titleCreate": "Create New Group",
+      "titleEdit": "Edit Group",
+      "nameLabel": "Group Name",
+      "namePlaceholder": "Enter group name",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Enter group description (optional)",
+      "cancel": "Cancel",
+      "create": "Create",
+      "update": "Update",
+      "saving": "Saving..."
+    },
+    "groupList": {
+      "deleteConfirm": "Are you sure you want to delete this group?"
     }
   }
 }

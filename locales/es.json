@@ -4,7 +4,21 @@
     "loading": "Cargando...",
     "greeting": "¡Hola, mundo!",
     "welcome": "¡Bienvenido!",
-    "add": "Añadir"
+    "add": "Añadir",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "create": "Crear",
+    "update": "Actualizar",
+    "search": "Buscar",
+    "close": "Cerrar",
+    "back": "Volver",
+    "home": "Inicio",
+    "error": "Error",
+    "success": "Éxito",
+    "warning": "Advertencia",
+    "info": "Información"
   },
   "navbar": {
     "groups": "Grupos",
@@ -51,6 +65,61 @@
       "paidByUser": "Pagado por",
       "group": "Grupo",
       "splitType": "Tipo de división"
+    }
+  },
+  "pages": {
+    "groups": {
+      "title": "Grupos",
+      "create": "Crear Grupo",
+      "empty": "Aún no hay grupos",
+      "emptyMessage": "Crea tu primer grupo para comenzar",
+      "searchPlaceholder": "Buscar grupos por nombre o descripción...",
+      "noResults": "No se encontraron grupos",
+      "noResultsMessage": "Intenta ajustar tus términos de búsqueda",
+      "errors": {
+        "loadFailed": "Error al cargar grupos. Por favor, recarga la página.",
+        "unauthorized": "No autorizado - Sin token de acceso"
+      }
+    },
+    "profile": {
+      "title": "Perfil",
+      "errors": {
+        "loadFailed": "Error al cargar perfil. Por favor, recarga la página.",
+        "noData": "No se encontraron datos del perfil",
+        "noDataMessage": "No se pudo cargar tu información de perfil"
+      }
+    },
+    "notFound": {
+      "title": "Página No Encontrada",
+      "subtitle": "404",
+      "message": "La página que buscas no existe o ha sido movida.",
+      "help": "Si crees que esto es un error, por favor contacta a soporte.",
+      "searchHelp": "O intenta buscar lo que necesitas desde la página principal.",
+      "goHome": "Ir al Inicio",
+      "goBack": "Volver"
+    }
+  },
+  "components": {
+    "groupCard": {
+      "noDescription": "Sin descripción proporcionada",
+      "created": "Creado",
+      "edit": "Editar",
+      "delete": "Eliminar"
+    },
+    "createGroupDialog": {
+      "titleCreate": "Crear Nuevo Grupo",
+      "titleEdit": "Editar Grupo",
+      "nameLabel": "Nombre del Grupo",
+      "namePlaceholder": "Ingresa el nombre del grupo",
+      "descriptionLabel": "Descripción",
+      "descriptionPlaceholder": "Ingresa la descripción del grupo (opcional)",
+      "cancel": "Cancelar",
+      "create": "Crear",
+      "update": "Actualizar",
+      "saving": "Guardando..."
+    },
+    "groupList": {
+      "deleteConfirm": "¿Estás seguro de que quieres eliminar este grupo?"
     }
   }
 }
