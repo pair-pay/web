@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import {
   Dialog,
   DialogContent,
@@ -31,6 +32,7 @@ export const CreateGroupDialog: React.FC<CreateGroupDialogProps> = ({
   editingGroup,
   isLoading = false,
 }) => {
+  const t = useTranslations();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
@@ -70,28 +72,36 @@ export const CreateGroupDialog: React.FC<CreateGroupDialogProps> = ({
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>
-            {editingGroup ? 'Edit Group' : 'Create New Group'}
+            {editingGroup
+              ? t('components.createGroupDialog.titleEdit')
+              : t('components.createGroupDialog.titleCreate')}
           </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Group Name</Label>
+            <Label htmlFor="name">
+              {t('components.createGroupDialog.nameLabel')}
+            </Label>
             <Input
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Enter group name"
+              placeholder={t('components.createGroupDialog.namePlaceholder')}
               required
               disabled={isLoading}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">
+              {t('components.createGroupDialog.descriptionLabel')}
+            </Label>
             <Textarea
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter group description (optional)"
+              placeholder={t(
+                'components.createGroupDialog.descriptionPlaceholder',
+              )}
               rows={3}
               disabled={isLoading}
             />

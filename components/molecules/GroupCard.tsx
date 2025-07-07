@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslations } from 'next-intl';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -30,6 +31,7 @@ export const GroupCard: React.FC<GroupCardProps> = ({
   onClick,
   className,
 }) => {
+  const t = useTranslations();
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('es-ES', {
       year: 'numeric',
@@ -62,7 +64,7 @@ export const GroupCard: React.FC<GroupCardProps> = ({
               }}
             >
               <Edit className="mr-2 h-4 w-4" />
-              Edit
+              {t('components.groupCard.edit')}
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={(e) => {
@@ -72,18 +74,18 @@ export const GroupCard: React.FC<GroupCardProps> = ({
               className="text-destructive"
             >
               <Trash2 className="mr-2 h-4 w-4" />
-              Delete
+              {t('components.groupCard.delete')}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </CardHeader>
       <CardContent>
         <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
-          {group.description || 'No description provided'}
+          {group.description || t('components.groupCard.noDescription')}
         </p>
         <div className="flex justify-between items-center">
           <Badge variant="secondary" className="text-xs">
-            Created {formatDate(group.createdAt)}
+            {t('components.groupCard.created')} {formatDate(group.createdAt)}
           </Badge>
         </div>
       </CardContent>

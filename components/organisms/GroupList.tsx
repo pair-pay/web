@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import { GroupSearchInput } from '@/components/atoms/GroupSearchInput';
 import { GroupCard } from '@/components/molecules/GroupCard';
 import { CreateGroupDialog } from '@/components/molecules/CreateGroupDialog';
@@ -39,6 +40,7 @@ export const GroupList: React.FC<GroupListProps> = ({
   isUpdating = false,
   className,
 }) => {
+  const t = useTranslations();
   const [searchQuery, setSearchQuery] = useState('');
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
   const [editingGroup, setEditingGroup] = useState<GroupDTO | null>(null);
@@ -78,7 +80,7 @@ export const GroupList: React.FC<GroupListProps> = ({
   };
 
   const handleDeleteGroup = (groupId: string) => {
-    if (window.confirm('Are you sure you want to delete this group?')) {
+    if (window.confirm(t('components.groupList.deleteConfirm'))) {
       onDeleteGroup(groupId);
     }
   };
@@ -101,7 +103,7 @@ export const GroupList: React.FC<GroupListProps> = ({
         <Alert variant="destructive" className="max-w-md">
           <AlertCircle className="h-4 w-4" />
           <AlertDescription>
-            Error loading groups. Please try refreshing the page.
+            {t('pages.groups.errors.loadFailed')}
           </AlertDescription>
         </Alert>
       </div>
@@ -114,11 +116,11 @@ export const GroupList: React.FC<GroupListProps> = ({
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex items-center space-x-2">
           <Users className="h-6 w-6 text-primary" />
-          <h1 className="text-2xl font-bold">Groups</h1>
+          <h1 className="text-2xl font-bold">{t('pages.groups.title')}</h1>
         </div>
         <Button onClick={() => setIsCreateDialogOpen(true)} className="gap-2">
           <Plus className="h-4 w-4" />
-          Create Group
+          {t('pages.groups.create')}
         </Button>
       </div>
 
@@ -128,7 +130,7 @@ export const GroupList: React.FC<GroupListProps> = ({
       <GroupSearchInput
         value={searchQuery}
         onChange={setSearchQuery}
-        placeholder="Search groups by name or description..."
+        placeholder={t('pages.groups.searchPlaceholder')}
         className="max-w-md"
       />
 
@@ -138,12 +140,14 @@ export const GroupList: React.FC<GroupListProps> = ({
           <div className="text-center space-y-2">
             <Users className="h-12 w-12 text-muted-foreground mx-auto" />
             <h3 className="text-lg font-semibold">
-              {searchQuery ? 'No groups found' : 'No groups yet'}
+              {searchQuery
+                ? t('pages.groups.noResults')
+                : t('pages.groups.empty')}
             </h3>
             <p className="text-muted-foreground">
               {searchQuery
-                ? 'Try adjusting your search terms'
-                : 'Create your first group to get started'}
+                ? t('pages.groups.noResultsMessage')
+                : t('pages.groups.emptyMessage')}
             </p>
             {!searchQuery && (
               <Button
@@ -151,7 +155,7 @@ export const GroupList: React.FC<GroupListProps> = ({
                 className="mt-4 gap-2"
               >
                 <Plus className="h-4 w-4" />
-                Create Group
+                {t('pages.groups.create')}
               </Button>
             )}
           </div>
