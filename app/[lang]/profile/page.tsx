@@ -17,7 +17,11 @@ import React from 'react';
 const ProfilePage = () => {
   const t = useTranslations();
   const { user } = useAuth();
-  const { data: userData, isLoading, isError } = useUser(user?.id);
+  const { data: userData, isLoading, isError, updateUser } = useUser(user?.id);
+
+  const handleUpdateUser = (userData: { id: string; name: string }) => {
+    updateUser.mutate(userData);
+  };
 
   if (isLoading) {
     return (
@@ -101,7 +105,11 @@ const ProfilePage = () => {
 
       {/* Profile Content */}
       <div className="max-w-4xl">
-        <ProfileCard user={userData} />
+        <ProfileCard
+          user={userData}
+          onUpdateUser={handleUpdateUser}
+          isUpdating={updateUser.isPending}
+        />
       </div>
     </div>
   );

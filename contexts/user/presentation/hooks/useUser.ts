@@ -1,7 +1,8 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { UserApiRepository } from '../../infrastructure/api/user-api.repository';
+import { UserDTO } from '../../application/dto/user.dto';
 
 /**
  * Custom hook to fetch user data by ID.
@@ -9,7 +10,7 @@ import { UserApiRepository } from '../../infrastructure/api/user-api.repository'
 export function useUser(userId: string | undefined) {
   const userRepository = new UserApiRepository();
 
-  return useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['user', userId],
     queryFn: async () => {
       if (!userId) return null;
@@ -17,4 +18,15 @@ export function useUser(userId: string | undefined) {
     },
     enabled: !!userId,
   });
+
+  const updateUser = useMutation({
+    mutationFn: async (userData: Partial<UserDTO>) => {
+      return await userRepository.update(userData);
+    },
+    onSuccess: () => {
+      refetch();
+    },
+  });
+
+  return { data, isLoading, isError, updateUser };
 }

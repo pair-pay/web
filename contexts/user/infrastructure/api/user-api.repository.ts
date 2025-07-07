@@ -13,4 +13,17 @@ export class UserApiRepository implements UserRepository {
 
     return data;
   }
+
+  async update(userData: Partial<UserDTO>): Promise<UserDTO> {
+    let url = `/api/users/`;
+
+    const response = await fetch(url, {
+      method: 'PUT',
+      body: JSON.stringify(userData),
+    });
+
+    const data: UserDTO = await response.json();
+
+    return data;
+  }
 }

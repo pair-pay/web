@@ -123,7 +123,12 @@
     },
     "profileHeader": {
       "profileInformation": "Información del Perfil",
-      "id": "ID"
+      "id": "ID",
+      "editName": "Editar Nombre",
+      "saveName": "Guardar",
+      "cancelEdit": "Cancelar",
+      "editMode": "Modo de edición",
+      "namePlaceholder": "Ingresa tu nombre"
     },
     "profileDetails": {
       "accountDetails": "Detalles de la Cuenta",
