@@ -1,8 +1,8 @@
-import * as React from "react";
-import { Separator } from "@/components/ui/separator";
-import { ProfileHeader } from "@/components/molecules/ProfileHeader";
-import { ProfileDetails } from "@/components/molecules/ProfileDetails";
-import { cn } from "@/lib/utils";
+import * as React from 'react';
+import { Separator } from '@/components/ui/separator';
+import { ProfileHeader } from '@/components/molecules/ProfileHeader';
+import { ProfileDetails } from '@/components/molecules/ProfileDetails';
+import { cn } from '@/lib/utils';
 
 export interface ProfileCardProps {
   user: {
@@ -26,7 +26,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
   className,
 }) => {
   return (
-    <div className={cn("w-full max-w-4xl mx-auto p-8 space-y-8", className)}>
+    <div className={cn('w-full max-w-4xl mx-auto p-8 space-y-8', className)}>
       <ProfileHeader name={user.name} id={user.id} image={user.image} />
 
       <Separator />

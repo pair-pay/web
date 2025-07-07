@@ -1,5 +1,5 @@
-import { UserDTO } from "../../application/dto/user.dto";
-import { UserRepository } from "../../application/ports/user.repository";
+import { UserDTO } from '../../application/dto/user.dto';
+import { UserRepository } from '../../application/ports/user.repository';
 
 /**
  * Implementation of UserRepository using a REST API.
