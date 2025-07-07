@@ -1,7 +1,8 @@
-import * as React from "react";
-import { InfoItem } from "@/components/atoms/InfoItem";
-import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
+import * as React from 'react';
+import { useTranslations } from 'next-intl';
+import { InfoItem } from '@/components/atoms/InfoItem';
+import { Separator } from '@/components/ui/separator';
+import { cn } from '@/lib/utils';
 
 export interface ProfileDetailsProps {
   id: string;
@@ -24,18 +25,20 @@ export const ProfileDetails: React.FC<ProfileDetailsProps> = ({
   updatedAt,
   className,
 }) => {
+  const t = useTranslations();
+
   // Format dates for better display
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return {
-      date: date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
+      date: date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
       }),
-      time: date.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
+      time: date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
       }),
     };
   };
@@ -44,14 +47,20 @@ export const ProfileDetails: React.FC<ProfileDetailsProps> = ({
   const updatedDate = formatDate(updatedAt);
 
   return (
-    <div className={cn("space-y-6", className)}>
+    <div className={cn('space-y-6', className)}>
       <div>
-        <h2 className="text-lg font-semibold mb-4">Account Details</h2>
+        <h2 className="text-lg font-semibold mb-4">
+          {t('components.profileDetails.accountDetails')}
+        </h2>
         <dl className="grid gap-4 sm:grid-cols-2">
-          <InfoItem label="User ID" value={id} copyable />
+          <InfoItem
+            label={t('components.profileDetails.userId')}
+            value={id}
+            copyable
+          />
 
           <InfoItem
-            label="Account Created"
+            label={t('components.profileDetails.accountCreated')}
             value={
               <div className="space-y-1">
                 <div>{createdDate.date}</div>
@@ -63,7 +72,7 @@ export const ProfileDetails: React.FC<ProfileDetailsProps> = ({
           />
 
           <InfoItem
-            label="Last Updated"
+            label={t('components.profileDetails.lastUpdated')}
             value={
               <div className="space-y-1">
                 <div>{updatedDate.date}</div>
@@ -75,10 +84,10 @@ export const ProfileDetails: React.FC<ProfileDetailsProps> = ({
           />
 
           <InfoItem
-            label="Status"
+            label={t('components.profileDetails.status')}
             value={
               <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                Active
+                {t('components.profileDetails.active')}
               </span>
             }
           />

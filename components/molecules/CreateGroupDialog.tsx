@@ -113,10 +113,14 @@ export const CreateGroupDialog: React.FC<CreateGroupDialogProps> = ({
               onClick={() => onOpenChange(false)}
               disabled={isLoading}
             >
-              Cancel
+              {t('components.createGroupDialog.cancel')}
             </Button>
             <Button type="submit" disabled={!isValid || isLoading}>
-              {isLoading ? 'Saving...' : editingGroup ? 'Update' : 'Create'}
+              {isLoading
+                ? t('components.createGroupDialog.saving')
+                : editingGroup
+                ? t('components.createGroupDialog.update')
+                : t('components.createGroupDialog.create')}
             </Button>
           </DialogFooter>
         </form>

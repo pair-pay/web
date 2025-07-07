@@ -120,6 +120,18 @@
     },
     "groupList": {
       "deleteConfirm": "Are you sure you want to delete this group?"
+    },
+    "profileHeader": {
+      "profileInformation": "Profile Information",
+      "id": "ID"
+    },
+    "profileDetails": {
+      "accountDetails": "Account Details",
+      "userId": "User ID",
+      "accountCreated": "Account Created",
+      "lastUpdated": "Last Updated",
+      "status": "Status",
+      "active": "Active"
     }
   }
 }

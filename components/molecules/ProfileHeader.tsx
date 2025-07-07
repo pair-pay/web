@@ -1,7 +1,8 @@
-import * as React from "react";
-import { ProfileAvatar } from "@/components/atoms/ProfileAvatar";
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+import * as React from 'react';
+import { useTranslations } from 'next-intl';
+import { ProfileAvatar } from '@/components/atoms/ProfileAvatar';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 export interface ProfileHeaderProps {
   name: string;
@@ -24,19 +25,21 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   image,
   className,
 }) => {
+  const t = useTranslations();
+
   // Generate fallback from name
   const fallback = name
-    .split(" ")
+    .split(' ')
     .map((word) => word.charAt(0))
-    .join("")
+    .join('')
     .toUpperCase()
     .slice(0, 2);
 
   return (
     <div
       className={cn(
-        "flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left",
-        className
+        'flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left',
+        className,
       )}
     >
       <ProfileAvatar src={image} alt={name} fallback={fallback} size="xl" />
@@ -47,12 +50,12 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             {name}
           </h1>
           <p className="text-muted-foreground text-sm mt-1">
-            Profile Information
+            {t('components.profileHeader.profileInformation')}
           </p>
         </div>
 
         <Badge variant="outline" className="w-fit mx-auto sm:mx-0">
-          ID: {id.slice(0, 8)}...
+          {t('components.profileHeader.id')}: {id.slice(0, 8)}...
         </Badge>
       </div>
     </div>

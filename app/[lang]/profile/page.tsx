@@ -6,6 +6,7 @@ import { ProfileCard } from '@/components/organisms/ProfileCard';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
 import { User, AlertCircle, UserX } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 /**
@@ -14,6 +15,7 @@ import React from 'react';
  * Built with atomic design principles and shadcn/ui components
  */
 const ProfilePage = () => {
+  const t = useTranslations();
   const { user } = useAuth();
   const { data: userData, isLoading, isError } = useUser(user?.id);
 
@@ -23,7 +25,7 @@ const ProfilePage = () => {
         {/* Header */}
         <div className="flex items-center space-x-2">
           <User className="h-6 w-6 text-primary" />
-          <h1 className="text-2xl font-bold">Profile</h1>
+          <h1 className="text-2xl font-bold">{t('pages.profile.title')}</h1>
         </div>
 
         <Separator />
@@ -42,7 +44,7 @@ const ProfilePage = () => {
         {/* Header */}
         <div className="flex items-center space-x-2">
           <User className="h-6 w-6 text-primary" />
-          <h1 className="text-2xl font-bold">Profile</h1>
+          <h1 className="text-2xl font-bold">{t('pages.profile.title')}</h1>
         </div>
 
         <Separator />
@@ -52,7 +54,7 @@ const ProfilePage = () => {
           <Alert variant="destructive" className="max-w-md">
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>
-              Error loading profile. Please try refreshing the page.
+              {t('pages.profile.errors.loadFailed')}
             </AlertDescription>
           </Alert>
         </div>
@@ -66,7 +68,7 @@ const ProfilePage = () => {
         {/* Header */}
         <div className="flex items-center space-x-2">
           <User className="h-6 w-6 text-primary" />
-          <h1 className="text-2xl font-bold">Profile</h1>
+          <h1 className="text-2xl font-bold">{t('pages.profile.title')}</h1>
         </div>
 
         <Separator />
@@ -75,9 +77,11 @@ const ProfilePage = () => {
         <div className="flex items-center justify-center min-h-[40vh]">
           <div className="text-center space-y-2">
             <UserX className="h-12 w-12 text-muted-foreground mx-auto" />
-            <h3 className="text-lg font-semibold">No profile data found</h3>
+            <h3 className="text-lg font-semibold">
+              {t('pages.profile.errors.noData')}
+            </h3>
             <p className="text-muted-foreground">
-              Unable to load your profile information
+              {t('pages.profile.errors.noDataMessage')}
             </p>
           </div>
         </div>
@@ -90,7 +94,7 @@ const ProfilePage = () => {
       {/* Header */}
       <div className="flex items-center space-x-2">
         <User className="h-6 w-6 text-primary" />
-        <h1 className="text-2xl font-bold">Profile</h1>
+        <h1 className="text-2xl font-bold">{t('pages.profile.title')}</h1>
       </div>
 
       <Separator />

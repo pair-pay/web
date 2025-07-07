@@ -120,6 +120,18 @@
     },
     "groupList": {
       "deleteConfirm": "¿Estás seguro de que quieres eliminar este grupo?"
+    },
+    "profileHeader": {
+      "profileInformation": "Información del Perfil",
+      "id": "ID"
+    },
+    "profileDetails": {
+      "accountDetails": "Detalles de la Cuenta",
+      "userId": "ID de Usuario",
+      "accountCreated": "Cuenta Creada",
+      "lastUpdated": "Última Actualización",
+      "status": "Estado",
+      "active": "Activo"
     }
   }
 }
