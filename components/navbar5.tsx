@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { MenuIcon } from "lucide-react";
+import { MenuIcon } from 'lucide-react';
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+} from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -17,20 +17,20 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+} from '@/components/ui/navigation-menu';
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { useAuth } from "@/contexts/auth/presentation/hooks/useAuth";
-import { useUser } from "@/contexts/user/presentation/hooks/useUser";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
+} from '@/components/ui/sheet';
+import Link from 'next/link';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { useAuth } from '@/contexts/auth/presentation/hooks/useAuth';
+import { useUser } from '@/contexts/user/presentation/hooks/useUser';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 const NavBar = () => {
   const { user } = useAuth();
@@ -40,18 +40,18 @@ const NavBar = () => {
 
   const navLinks = [
     {
-      title: t("navbar.groups"),
-      href: "/groups",
+      title: t('navbar.groups'),
+      href: '/groups',
     },
     {
-      title: t("navbar.activity"),
-      href: "/activity",
+      title: t('navbar.activity'),
+      href: '/activity',
     },
   ];
 
   return (
-    <section className="p-4 bg-sidebar">
-      <div className="container mx-auto">
+    <section className="py-4 bg-sidebar">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
         <nav className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             {/* TODO: Add logo */}
@@ -63,7 +63,7 @@ const NavBar = () => {
               height={32}
             />
             <span className="text-lg font-semibold tracking-tighter">
-              {t("common.appName")}
+              {t('common.appName')}
             </span>
           </Link>
           <NavigationMenu className="hidden lg:block">
@@ -109,7 +109,7 @@ const NavBar = () => {
                       height={32}
                     />
                     <span className="text-lg font-semibold tracking-tighter">
-                      {t("common.appName")}
+                      {t('common.appName')}
                     </span>
                   </Link>
                 </SheetTitle>
