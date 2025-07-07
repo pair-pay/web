@@ -109,7 +109,7 @@ export const GroupList: React.FC<GroupListProps> = ({
   }
 
   return (
-    <div className={`w-full max-w-6xl mx-auto p-8 space-y-8 ${className}`}>
+    <div className={`w-full mx-auto space-y-8 ${className}`}>
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex items-center space-x-2">

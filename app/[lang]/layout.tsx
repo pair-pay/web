@@ -21,7 +21,7 @@ export default async function LangLayout({
   return (
     <I18nProvider locale={params.lang} messages={messages}>
       <NavBar />
-      <div className="flex flex-col min-h-screen p-4">{children}</div>
+      <div className="flex flex-col min-h-screen p-4 md:p-8">{children}</div>
     </I18nProvider>
   );
 }
