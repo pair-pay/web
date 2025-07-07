@@ -1,0 +1,56 @@
+{
+  "common": {
+    "appName": "Pair Pay",
+    "loading": "Loading...",
+    "greeting": "Hello, world!",
+    "welcome": "Welcome!",
+    "add": "Add"
+  },
+  "navbar": {
+    "groups": "Groups",
+    "activity": "Activity"
+  },
+  "auth": {
+    "common": {
+      "email": "Email",
+      "password": "Password",
+      "google": "Continue with Google",
+      "profile": "Profile",
+      "logout": "Logout"
+    },
+    "login": {
+      "title": "Login",
+      "subtitle": "Please enter your details",
+      "noAccount": "Don't have an account?",
+      "remember": "Remember for 30 days",
+      "forgotPassword": "Forgot password?"
+    },
+    "register": {
+      "title": "Register",
+      "subtitle": "Please enter your details",
+      "alreadyHaveAccount": "Already have an account?",
+      "remember": "Remember for 30 days",
+      "forgotPassword": "Forgot password?",
+      "confirmPassword": "Confirm password",
+      "passwordsDontMatch": "Passwords don't match"
+    },
+    "validation": {
+      "required": "This field is required",
+      "invalidEmail": "Invalid email address",
+      "passwordMin": "Password must be at least 12 characters"
+    }
+  },
+  "expenses": {
+    "add": {
+      "title": "Add Expense",
+      "name": "Name",
+      "amount": "Amount",
+      "currency": "Currency",
+      "description": "Description",
+      "date": "Date",
+      "paidByUser": "Paid By User",
+      "group": "Group",
+      "splitType": "Split Type"
+    }
+  }
+}

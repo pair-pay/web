@@ -1,0 +1,56 @@
+{
+  "common": {
+    "appName": "Pair Pay",
+    "loading": "Cargando...",
+    "greeting": "¡Hola, mundo!",
+    "welcome": "¡Bienvenido!",
+    "add": "Añadir"
+  },
+  "navbar": {
+    "groups": "Grupos",
+    "activity": "Actividad"
+  },
+  "auth": {
+    "common": {
+      "email": "Email",
+      "password": "Contraseña",
+      "google": "Continuar con Google",
+      "profile": "Perfil",
+      "logout": "Cerrar sesión"
+    },
+    "login": {
+      "title": "Iniciar sesión",
+      "subtitle": "Por favor, ingresa tus detalles",
+      "noAccount": "¿No tienes una cuenta?",
+      "remember": "Recuérdame por 30 días",
+      "forgotPassword": "¿Olvidaste tu contraseña?"
+    },
+    "register": {
+      "title": "Registrarse",
+      "subtitle": "Por favor, ingresa tus detalles",
+      "noAccount": "¿Ya tienes una cuenta?",
+      "remember": "Recuérdame por 30 días",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "confirmPassword": "Confirmar contraseña",
+      "passwordsDontMatch": "Las contraseñas no coinciden"
+    },
+    "validation": {
+      "required": "Este campo es obligatorio",
+      "invalidEmail": "Email no válido",
+      "passwordMin": "La contraseña debe tener al menos 12 caracteres"
+    }
+  },
+  "expenses": {
+    "add": {
+      "title": "Añadir gasto",
+      "name": "Nombre",
+      "amount": "Cantidad",
+      "currency": "Moneda",
+      "description": "Descripción",
+      "date": "Fecha",
+      "paidByUser": "Pagado por",
+      "group": "Grupo",
+      "splitType": "Tipo de división"
+    }
+  }
+}
