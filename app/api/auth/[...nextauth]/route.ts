@@ -1,10 +1,10 @@
-import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
+import NextAuth, { NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
 
 // Extend NextAuth types to include id, role, accessToken, refreshToken
 // See: https://next-auth.js.org/getting-started/typescript#module-augmentation
 
-declare module "next-auth" {
+declare module 'next-auth' {
   interface Session {
     user: {
       id: string;
@@ -15,7 +15,7 @@ declare module "next-auth" {
     refreshToken?: string;
   }
 }
-declare module "next-auth/jwt" {
+declare module 'next-auth/jwt' {
   interface JWT {
     id: string;
     email: string;
@@ -25,37 +25,37 @@ declare module "next-auth/jwt" {
   }
 }
 
-const handler = NextAuth({
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: 'Credentials',
       credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
         const res = await fetch(
           `${process.env.BACKEND_API_URL}/auth/email/login`,
           {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               email: credentials?.email,
               password: credentials?.password,
             }),
-          }
+          },
         );
 
         if (!res.ok) return null;
         const data = await res.json();
         return {
-          id: data.user?.id ?? "",
-          email: data.email ?? "",
-          role: typeof data.role === "string" ? data.role : undefined,
+          id: data.user?.id ?? '',
+          email: data.email ?? '',
+          role: typeof data.role === 'string' ? data.role : undefined,
           accessToken:
-            typeof data.accessToken === "string" ? data.accessToken : undefined,
+            typeof data.accessToken === 'string' ? data.accessToken : undefined,
           refreshToken:
-            typeof data.refreshToken === "string"
+            typeof data.refreshToken === 'string'
               ? data.refreshToken
               : undefined,
         };
@@ -63,7 +63,7 @@ const handler = NextAuth({
     }),
   ],
   session: {
-    strategy: "jwt",
+    strategy: 'jwt' as const,
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -87,14 +87,14 @@ const handler = NextAuth({
     async session({ session, token }) {
       if (token) {
         session.user = {
-          id: typeof token.id === "string" ? token.id : "",
-          email: typeof token.email === "string" ? token.email : "",
-          role: typeof token.role === "string" ? token.role : undefined,
+          id: typeof token.id === 'string' ? token.id : '',
+          email: typeof token.email === 'string' ? token.email : '',
+          role: typeof token.role === 'string' ? token.role : undefined,
         };
         session.accessToken =
-          typeof token.accessToken === "string" ? token.accessToken : undefined;
+          typeof token.accessToken === 'string' ? token.accessToken : undefined;
         session.refreshToken =
-          typeof token.refreshToken === "string"
+          typeof token.refreshToken === 'string'
             ? token.refreshToken
             : undefined;
       }
@@ -102,9 +102,11 @@ const handler = NextAuth({
     },
   },
   pages: {
-    signIn: "/login",
+    signIn: '/login',
   },
   secret: process.env.NEXTAUTH_SECRET,
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

@@ -1,4 +1,49 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../auth/[...nextauth]/route';
+
+export async function GET(req: NextRequest) {
+  const backendUrl = process.env.BACKEND_API_URL;
+  if (!backendUrl) {
+    return NextResponse.json(
+      { error: 'Backend URL not configured' },
+      { status: 500 },
+    );
+  }
+
+  // Get session with access token
+  const session = await getServerSession(authOptions);
+  if (!session?.accessToken) {
+    return NextResponse.json(
+      { error: 'Unauthorized - No access token' },
+      { status: 401 },
+    );
+  }
+
+  const { searchParams } = new URL(req.url);
+  let url = `${backendUrl}/groups`;
+
+  // Add query parameters if any
+  const params: string[] = [];
+  searchParams.forEach((value, key) => {
+    params.push(`${key}=${value}`);
+  });
+  if (params.length) url += '?' + params.join('&');
+
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${session.accessToken}`,
+    },
+  });
+
+  const data = await response.json();
+
+  console.log('Groups data received from API', JSON.stringify(data, null, 2));
+
+  return NextResponse.json(data, { status: response.status });
+}
 
 export async function POST(req: NextRequest) {
   const backendUrl = process.env.BACKEND_API_URL;
@@ -6,6 +51,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       { error: 'Backend URL not configured' },
       { status: 500 },
+    );
+  }
+
+  // Get session with access token
+  const session = await getServerSession(authOptions);
+  if (!session?.accessToken) {
+    return NextResponse.json(
+      { error: 'Unauthorized - No access token' },
+      { status: 401 },
     );
   }
 
@@ -18,6 +72,7 @@ export async function POST(req: NextRequest) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${session.accessToken}`,
     },
     body: JSON.stringify(body),
   });

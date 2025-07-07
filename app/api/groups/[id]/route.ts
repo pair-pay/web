@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../../auth/[...nextauth]/route';
 
 export async function GET(
   req: NextRequest,
@@ -12,6 +14,15 @@ export async function GET(
     );
   }
 
+  // Get session with access token
+  const session = await getServerSession(authOptions);
+  if (!session?.accessToken) {
+    return NextResponse.json(
+      { error: 'Unauthorized - No access token' },
+      { status: 401 },
+    );
+  }
+
   const { id } = params;
   const url = `${backendUrl}/groups/${id}`;
 
@@ -19,7 +30,7 @@ export async function GET(
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      // You can forward cookies, tokens, etc. if needed
+      Authorization: `Bearer ${session.accessToken}`,
     },
   });
 
@@ -45,6 +56,15 @@ export async function PUT(
     );
   }
 
+  // Get session with access token
+  const session = await getServerSession(authOptions);
+  if (!session?.accessToken) {
+    return NextResponse.json(
+      { error: 'Unauthorized - No access token' },
+      { status: 401 },
+    );
+  }
+
   const { id } = params;
   const body = await req.json();
   const url = `${backendUrl}/groups/${id}`;
@@ -55,6 +75,7 @@ export async function PUT(
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${session.accessToken}`,
     },
     body: JSON.stringify(body),
   });
@@ -80,6 +101,15 @@ export async function DELETE(
     );
   }
 
+  // Get session with access token
+  const session = await getServerSession(authOptions);
+  if (!session?.accessToken) {
+    return NextResponse.json(
+      { error: 'Unauthorized - No access token' },
+      { status: 401 },
+    );
+  }
+
   const { id } = params;
   const url = `${backendUrl}/groups/${id}`;
 
@@ -89,6 +119,7 @@ export async function DELETE(
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${session.accessToken}`,
     },
   });
 
